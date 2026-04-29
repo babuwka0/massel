@@ -1,0 +1,124 @@
+Лабораторная работа 3/ EDA датасета продаж видеоигр
+------------------------------------------------------------
+Размер датасета: 12601 строк, 10 столбцов
+
+Типы данных:
+Name                str
+Platform            str
+Year              int64
+Genre               str
+Publisher           str
+NA_Sales        float64
+EU_Sales        float64
+JP_Sales        float64
+Other_Sales     float64
+Global_Sales    float64
+dtype: object
+
+Первые 5 строк:
+                       Name Platform  Year         Genre  ... EU_Sales  JP_Sales  Other_Sales  Global_Sales
+0                Wii Sports      Wii  2006        Sports  ...    29.02      3.77         8.46         82.74
+1         Super Mario Bros.      NES  1985      Platform  ...     3.58      6.81         0.77         40.24
+2            Mario Kart Wii      Wii  2008        Racing  ...    12.88      3.79         3.31         35.82
+3         Wii Sports Resort      Wii  2009        Sports  ...    11.01      3.28         2.96         33.00
+4  Pokemon Red/Pokemon Blue       GB  1996  Role-Playing  ...     8.89     10.22         1.00         31.37
+
+[5 rows x 10 columns]
+
+Последние 5 строк:
+                                Name Platform  Year         Genre  ... EU_Sales  JP_Sales  Other_Sales  Global_Sales
+12596  Shining Force III: Scenario 2      SAT  1998      Strategy  ...     0.00      0.05         0.00          0.05
+12597               Airline Tycoon 2       PC  2011    Simulation  ...     0.04      0.00         0.01          0.05
+12598              Worms World Party      GBA  2002      Strategy  ...     0.01      0.00         0.00          0.05
+12599              Medabots: Metabee      GBA  2002  Role-Playing  ...     0.01      0.00         0.00          0.05
+12600       Medal of Honor: Airborne       PC  2007       Shooter  ...     0.04      0.00         0.01           NaN
+
+[5 rows x 10 columns]
+
+Пропущенные значения:
+Name            0
+Platform        0
+Year            0
+Genre           0
+Publisher       0
+NA_Sales        0
+EU_Sales        0
+JP_Sales        0
+Other_Sales     0
+Global_Sales    1
+dtype: int64
+
+Основные статистики:
+               Year      NA_Sales      EU_Sales      JP_Sales   Other_Sales  Global_Sales
+count  12601.000000  12601.000000  12601.000000  12601.000000  12601.000000  12601.000000
+mean    2005.922546      0.340663      0.189087      0.098624      0.062375      0.690823
+std        5.998706      0.921726      0.572514      0.352071      0.214130      1.754056
+min     1980.000000      0.000000      0.000000      0.000000      0.000000      0.050000
+25%     2002.000000      0.050000      0.000000      0.000000      0.010000      0.130000
+50%     2007.000000      0.130000      0.040000      0.000000      0.020000      0.270000
+75%     2010.000000      0.330000      0.160000      0.060000      0.050000      0.630000
+max     2020.000000     41.490000     29.020000     10.220000     10.570000     82.740000
+
+Уникальные значения категориальных признаков:
+Platform: 29 уникальных значений
+Platform
+PS2     1747
+DS      1528
+PS3     1106
+Wii     1088
+X360    1087
+PS      1046
+PSP      740
+XB       636
+GBA      592
+GC       441
+Name: count, dtype: int64
+Genre: 12 уникальных значений
+Genre
+Action          2597
+Sports          1958
+Misc            1309
+Role-Playing    1166
+Shooter         1044
+Racing           981
+Platform         746
+Fighting         702
+Adventure        641
+Simulation       636
+Name: count, dtype: int64
+Publisher: 422 уникальных значений
+Publisher
+Electronic Arts                 1247
+Activision                       880
+Ubisoft                          782
+Namco Bandai Games               684
+Nintendo                         667
+THQ                              661
+Konami Digital Entertainment     651
+Sony Computer Entertainment      624
+Sega                             524
+Take-Two Interactive             370
+Name: count, dtype: int64
+
+Анализ выбросов по Global_Sales:
+Q1 = 0.13, Q3 = 0.63, IQR = 0.50
+Граница выбросов: больше 1.38 млн копий
+Количество выбросов: 1386
+Топ-5 игр по глобальным продажам:
+                       Name Platform  Year         Genre  Global_Sales
+0                Wii Sports      Wii  2006        Sports         82.74
+1         Super Mario Bros.      NES  1985      Platform         40.24
+2            Mario Kart Wii      Wii  2008        Racing         35.82
+3         Wii Sports Resort      Wii  2009        Sports         33.00
+4  Pokemon Red/Pokemon Blue       GB  1996  Role-Playing         31.37
+
+Наблюдения:
+Самый продаваемый жанр: Action
+Лидирующая платформа по продажам: PS2
+Лидирующий издатель по продажам: Nintendo
+Продажи в Северной Америке сильнее всего связаны с глобальными продажами.
+
+Гипотезы для дальнейшей проверки:
+1. Жанр игры влияет на глобальные продажи.
+2. Платформа влияет на коммерческий успех игры.
+3. Региональные предпочтения отличаются: продажи в Японии распределены по жанрам иначе, чем в Северной Америке и Европе.
